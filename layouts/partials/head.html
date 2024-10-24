@@ -4,8 +4,9 @@
   <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-solid-900.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="{{ "lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
   {{ if eq .Site.Params.Comments.enabled true }}
-  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
-  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <!-- <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css"> -->
+  <script src="https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js"></script>
   {{ end }}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,11 +43,8 @@
     {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
   {{ end }}
   {{ end }}
-  {{ if .Site.GoogleAnalytics }}
-  {{ if .Site.Params.googleAnalyticsAsync }}
-    {{ template "_internal/google_analytics_async.html" . }}
-  {{ else }}
+  {{ if .Site.Config.Services.GoogleAnalytics.ID }}
+  
     {{ template "_internal/google_analytics.html" . }}
-  {{ end }}
   {{ end }}
 </head>

@@ -17,7 +17,14 @@
         <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></a>
       </li>
       {{ range .Site.Menus.main }}
-        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        <!-- <li><a href="{{ .URL }}">{{ .Name }}</a></li> -->
+
+        <!-- 如果名字是 开往 -->
+        {{ if eq .Name "开往" }}
+          <li><i class="fa-solid fa-train-subway"><a href="https://www.travellings.cn/go.html" target="_blank" rel="noopener" title="开往-友链接力"> 开往</a></i></li>
+        {{ else }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
       {{ end }}
     </ul>
   </div>
